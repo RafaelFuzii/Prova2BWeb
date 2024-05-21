@@ -1,0 +1,224 @@
+/* Estilos gerais */
+body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+/* Estilos para o cabeçalho */
+header {
+    background-color: #4682b4;
+    color: #fff;
+    padding: 1rem;
+    max-height: 100vh;
+    text-align: center;
+    position: relative;
+}
+
+.search-container {
+    position: relative;
+    width: 100%; /* Ocupa toda a largura do container */
+    max-width: 600px; /* Limite máximo para a largura do campo de busca */
+    margin: 0 auto; /* Centraliza horizontalmente */
+}
+
+.search-container input[type="text"] {
+    width: 100%; /* Ocupa toda a largura do container */
+    padding: 8px 10px 8px 40px; /* Espaço interno para não sobrepor o ícone */
+    box-sizing: border-box; /* Inclui o padding na largura total */
+    border: 2px solid #ccc; /* Borda do campo de input */
+    border-radius: 4px; /* Bordas arredondadas */
+}
+
+.search-container button {
+    position: absolute;
+    top: -1px;
+    bottom: 0;
+    right: 0px; /* Posiciona o botão à esquerda dentro do campo de busca */
+    border: none;
+    background: none;
+    cursor: pointer; /* Estilo do cursor ao passar o mouse */
+    color: #333; /* Cor do ícone */
+    font-size: 1.5em; /* Tamanho do ícone */
+    padding: 0 10px; /* Espaço interno do botão */
+}
+
+.search-container button span {
+    display: block; /* Garante que o ícone esteja centralizado verticalmente */
+    line-height: 40px; /* Altura da linha igual à altura do input para centralização vertical */
+}
+
+.filter-container {
+    position: absolute;
+    right: 15px;
+    top: 105px;
+}
+
+.filter-icon {
+    cursor: pointer;
+}
+
+.filter-count {
+    position: absolute;
+    right: -9px; /* Ajuste conforme necessário */
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 5px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+#filter-dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.4); /* Fundo escurecido com transparência */
+}
+
+#filter-dialog {
+    border: 1px solid #ccc; /* Bordas sutis, se necessário */
+    border-radius: 8px; /* Bordas arredondadas */
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave para o diálogo */
+    background-color: rgba(255, 255, 255, 0.95); /* Fundo branco com leve transparência */
+    color: #333; /* Cor do texto */
+    width: auto; /* ou uma largura específica, se necessário */
+    position: fixed; /* Garante que o dialog esteja fixo na tela */
+    top: 50%; /* Centraliza verticalmente */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translate(-50%, -50%); /* Ajuste fino para centralizar perfeitamente */
+    display: none; /* Mantém escondido até ser chamado */
+    z-index: 1050; /* Assegura que fique na frente de outros conteúdos */
+}
+
+#filter-form {
+    width: 100%; /* Define a largura do formulário para usar todo o espaço disponível no modal */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Cria duas colunas iguais */
+    grid-row-gap: 20px; /* Espaço vertical entre as linhas */
+    grid-column-gap: 20px; /* Espaço horizontal entre as colunas */
+}
+
+#filter-form label {
+    display: block; /* Garante que cada label esteja acima do seu respectivo campo de entrada */
+    margin-bottom: 5px; /* Espaço abaixo da label */
+}
+
+#filter-form label {
+    margin-right: 16rem;
+}
+
+#filter-form label[for="quantidade"] {
+    margin-right: 12rem;
+}
+
+#filter-form input[type="text"],
+#filter-form select,
+#filter-form input[type="date"] {
+    width: 80%; /* Define a largura dos campos para preencherem a célula da grid */
+    padding: 10px 3px 10px 3px; /* Padding para melhor visualização e interação */
+    border: 2px solid #ccc; /* Borda dos campos de entrada */
+    border-radius: 4px; /* Bordas arredondadas */
+}
+
+#filter-form .close-btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 24px;
+    color: #333; /* Cor do botão fechar */
+}
+
+#filter-form button[type="submit"] {
+    grid-column: 1 / -1; /* Estende o botão de aplicar para cobrir todas as colunas */
+    padding: 12px;
+    background-color: #007BFF; /* Cor de fundo do botão Aplicar */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px; /* Tamanho da fonte do botão Aplicar */
+    cursor: pointer;
+}
+
+main {
+    background-color: #f0f0f0;
+    padding: 1rem; /* Adiciona um pouco de espaçamento ao redor do conteúdo */
+    display: grid;
+    justify-content: center;
+}
+
+hr {
+    height: 2px; /* Define a altura da linha */
+    background-color: #e6e6e6; /* Cor da linha */
+    margin: 1rem 0; /* Espaço acima e abaixo da linha */
+    width: 100%; /* Largura da linha */
+}
+
+.noticia-list {
+    display: grid;
+    grid-template-columns: 1fr; /* Define uma coluna */
+    gap: 1rem; /* Espaço entre os itens */
+    max-width: 1140px;
+}
+
+.noticia-list li {
+    display: flex;
+    flex-direction: row; /* Coloca os elementos em uma linha */
+    align-items: flex-start; /* Alinha os itens no topo */
+}
+
+.noticia-list img {
+    width: 30%; /* Define a largura da imagem */
+    height: auto; /* Mantém a proporção da imagem */
+    border-radius: 8px;
+    margin-right: 1rem; /* Espaço entre a imagem e o texto */
+}
+
+.noticia-list .text-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Alinha o conteúdo ao início */
+}
+
+.noticia-list h2 {
+    font-size: 1.25rem;
+    margin: 0 0 0.5rem 0;
+}
+
+.noticia-list p {
+    flex: 1;
+    margin-top: 25px;
+    text-align: justify;
+}
+
+.noticia-list .noticia-metadata {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem;
+    color: #aaa;
+}
+
+.publicacao {
+    float: right;
+}
+
+.leia-mais{
+    width: 100%;
+    font-size: 18px;
+}
+
+
+
+
+/* Estilos para o rodapé */
+footer {
+    background-color: #4682b4;
+    color: #fff;
+    text-align: center;
+    padding: 2rem;
+}
