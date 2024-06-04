@@ -163,5 +163,44 @@ async function carregarNoticias() {
     }
 }
 
+const paginacao = document.getElementById("paginacao");
+
+function criarPaginas(totalPage, paginaAtual) {
+    let paginas = '';
+    let i = 1;
+    if (paginaAtual >= 7 && totalPage > 10) {
+      i = paginaAtual - 5
+    }
+    if (paginaAtual >= totalPage - 4 && totalPage > 10) {
+      i = totalPage - 9;
+    }
+    const fimPagina = i + 9
+    while (i <= fimPagina && i !== totalPage + 1) {
+      paginas += criarPagina(i);
+      i++;
+    }
+    paginacao.innerHTML = paginas;
+  }
+  
+  function criarPagina(index) {
+    const url = new URL(window.location);
+    const isAtiva = url.searchParams.get('page') === index.toString()
+    return `
+          <li>
+              <button 
+                  class="${isAtiva ? 'pagina-ativa' : 'pagina'} width100" 
+                  type="button" 
+                  onclick="changePage(this)">${index}</button>
+          </li>
+      `
+  }
+  
+  function changePage(element) {
+    const url = new URL(window.location);
+    url.searchParams.set('page', element.textContent);
+    window.history.pushState({}, '', url);
+    trazerInformacoesFiltradas()
+  }
+
 
 document.getElementById('filter-form').addEventListener('submit', applyFilters)

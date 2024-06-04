@@ -212,7 +212,32 @@ hr {
     font-size: 18px;
 }
 
-
+.pagina{
+    width: 40px;
+    height: 40px;
+    border: 2px solid #4682b4;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    text-align: center;
+    color: #008ebb;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+  
+  .pagina-ativa{
+    width: 40px;
+    height: 40px;
+    border: 2px solid #4682b4;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #4682b4;
+    color: #f0f0f0;
+  }
+  
+  .pagina:hover{
+    background-color: #4682b4;
+    color: #f0f0f0;
+  }
 
 
 /* Estilos para o rodapé */
